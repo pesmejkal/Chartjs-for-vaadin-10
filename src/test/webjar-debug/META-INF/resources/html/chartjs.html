@@ -1,0 +1,72 @@
+<link rel="import" href="../frontend/bower_components/polymer/polymer-element.html">
+<dom-module id="chart-js">
+    <template>
+        <div>
+            <canvas id="canvas"></canvas>
+        </div>
+    </template>
+    <script>
+        class Chartjs extends Polymer.Element {
+            static get properties(){
+                return {
+                    type: {
+                        type: String,
+                        observer: '_typeChanged'
+                        },
+                    data: {
+                        type: Array,
+                        observer: '_dataChanged'
+                        },
+                    options: {
+                        type:Object,
+                        observer: '_optionsChanged'
+                        }
+                }
+            }
+
+            _typeChanged(newValue, oldValue){
+                if(this.chart != undefined){
+                    this.chart.type = newValue;
+                    this.chart.update();
+                }
+
+            }
+
+            _dataChanged(newValue, oldValue){
+                if(this.chart != undefined){
+                    this.chart.data = newValue;
+                    this.chart.update();
+                }
+            }
+
+            _optionsChanged(newValue, oldValue){
+                if(this.chart != undefined){
+                    this.chart.options = newValue;
+                    this.chart.update();
+                }
+            }
+
+            static get is() {
+                return 'chart-js'
+            }
+
+            constructor() {
+                super();
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+
+                var ctx = this.shadowRoot.querySelector('#canvas').getContext('2d');
+                this.chart = new Chart(ctx, {type: this.type,data:[], options: {}}
+                    );
+                this.chart.data = this.data;
+                this.chart.update();
+                this.chart.options = this.options;
+                this.chart.update();
+            }
+        }
+
+        customElements.define(Chartjs.is, Chartjs);
+    </script>
+</dom-module>
