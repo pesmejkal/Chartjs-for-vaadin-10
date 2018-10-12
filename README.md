@@ -5,14 +5,17 @@ Vaadin 10 Java integration of chartjs library
 This is beta version
 
 ## Supports
-Bar, line, pie, doughnut chart
+almost everything what https://vaadin.com/directory/component/chartjs-add-on supports
 
 ## Does not support
-options configuration
+chartjs callbacks
 
 ## Usage
-You can extend <type>ChartJs class and added to your layout.
-Refer to DemoView and other files in test directory.
+It uses beans of above mentioned plugin to represent chart in POJO and convert it to JSON. To build these objects refer to documentation of the plugin. 
+Then it is enough to pass created object implementing CartConfig to ChartJS constructor and add it to your content.
+
+ChartJS chartJs = new ChartJS(barConfig);
+add(chartJs);
 
 ## About me
 I am a student at Brno University of technology.

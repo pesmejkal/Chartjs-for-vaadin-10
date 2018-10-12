@@ -1,7 +1,7 @@
 <link rel="import" href="../frontend/bower_components/polymer/polymer-element.html">
 <dom-module id="chart-js">
     <template>
-        <div>
+        <div style="position: relative; height:40vh; width:80vw">
             <canvas id="canvas"></canvas>
         </div>
     </template>
@@ -9,40 +9,9 @@
         class Chartjs extends Polymer.Element {
             static get properties(){
                 return {
-                    type: {
+                    chartJs: {
                         type: String,
-                        observer: '_typeChanged'
-                        },
-                    data: {
-                        type: Array,
-                        observer: '_dataChanged'
-                        },
-                    options: {
-                        type:Object,
-                        observer: '_optionsChanged'
                         }
-                }
-            }
-
-            _typeChanged(newValue, oldValue){
-                if(this.chart != undefined){
-                    this.chart.type = newValue;
-                    this.chart.update();
-                }
-
-            }
-
-            _dataChanged(newValue, oldValue){
-                if(this.chart != undefined){
-                    this.chart.data = newValue;
-                    this.chart.update();
-                }
-            }
-
-            _optionsChanged(newValue, oldValue){
-                if(this.chart != undefined){
-                    this.chart.options = newValue;
-                    this.chart.update();
                 }
             }
 
@@ -58,12 +27,7 @@
                 super.connectedCallback();
 
                 var ctx = this.shadowRoot.querySelector('#canvas').getContext('2d');
-                this.chart = new Chart(ctx, {type: this.type,data:[], options: {}}
-                    );
-                this.chart.data = this.data;
-                this.chart.update();
-                this.chart.options = this.options;
-                this.chart.update();
+                this.chart = new Chart(ctx, JSON.parse(this.chartJs));
             }
         }
 
