@@ -11,7 +11,18 @@
                 return {
                     chartJs: {
                         type: String,
+                        },
+                    chartData: {
+                        type: String,
+                        observer: '_chartDataChanged',
                         }
+                }
+            }
+
+            _chartDataChanged(newValue, oldValue){
+                if(this.chart != undefined && newValue != null){
+                    this.chart.data = JSON.parse(newValue);
+                    this.chart.update();
                 }
             }
 

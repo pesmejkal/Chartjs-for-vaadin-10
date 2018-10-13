@@ -5,4 +5,5 @@ import elemental.json.JsonObject;
 
 public interface ChartJsModel extends TemplateModel {
     void setChartJs(String jsonChart);
+    void setChartData(String jsonChartData);
 }
