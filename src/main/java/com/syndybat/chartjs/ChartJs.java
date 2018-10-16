@@ -8,8 +8,8 @@ import com.vaadin.flow.component.dependency.JavaScript;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 
 @Tag("chart-js")
-@HtmlImport("/html/chartjs.html")
-@JavaScript("../frontend/bower_components/chart.js/dist/Chart.js")
+@HtmlImport("html/chartjs.html")
+@JavaScript("bower_components/chart.js/dist/Chart.js")
 public class ChartJs extends PolymerTemplate<ChartJsModel> {
     public ChartJs(ChartConfig chartConfig) {
         getModel().setChartJs(chartConfig.buildJson().toJson());
