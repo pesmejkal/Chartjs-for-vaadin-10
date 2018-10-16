@@ -1,8 +1,8 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <dom-module id="chart-js">
     <template>
-        <div style="position: relative; height:40vh; width:80vw">
-            <canvas id="canvas"></canvas>
+        <div style="position: relative; width: 100%; height: 100%">
+            <canvas id="canvas" style="width: 100%; height: 100%"></canvas>
         </div>
     </template>
     <script>
@@ -10,11 +10,11 @@
             static get properties(){
                 return {
                     chartJs: {
-                        type: String,
+                        type: String
                         },
                     chartData: {
                         type: String,
-                        observer: '_chartDataChanged',
+                        observer: '_chartDataChanged'
                         }
                 }
             }
