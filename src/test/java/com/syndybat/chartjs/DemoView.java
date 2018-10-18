@@ -28,21 +28,21 @@ public class DemoView extends VerticalLayout {
     public DemoView() {
         /*setWidth("80%");
         setHeight("80%");*/
-        ChartJs lineChartJs = new ChartJs(getLineChart());
+        ChartJs lineChartJs = new ChartJs(getLineChart().buildJson().toJson());
         Div div1 = new Div();
         div1.setHeight("800px");
         div1.setWidth("800px");
         div1.add(lineChartJs);
         add(div1);
 
-        ChartJs barChartJs = new ChartJs(getBarChart());
+        ChartJs barChartJs = new ChartJs(getBarChart().buildJson().toJson());
         Div div2 = new Div();
         div2.setHeight("800px");
         div2.setWidth("800px");
         div2.add(barChartJs);
         add(div2);
 
-        ChartJs doughnutChartJs = new ChartJs(getDoughnutChart());
+        ChartJs doughnutChartJs = new ChartJs(getDoughnutChart().buildJson().toJson());
         Div div3 = new Div();
         div3.setHeight("800px");
         div3.setWidth("800px");

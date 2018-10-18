@@ -11,12 +11,17 @@ import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 @HtmlImport("html/chartjs.html")
 @JavaScript("bower_components/chart.js/dist/Chart.js")
 public class ChartJs extends PolymerTemplate<ChartJsModel> {
-    public ChartJs(ChartConfig chartConfig) {
-        getModel().setChartJs(chartConfig.buildJson().toJson());
+
+    public ChartJs(String chart) {
+        getModel().setChartJs(chart);
     }
 
-    public void setData(Data<?> data){
-        getModel().setChartData(data.buildJson().toJson());
+    public void updateChart(String chart){
+        getModel().setChartJs(chart);
+    }
+
+    public void updateData(String data){
+        getModel().setChartData(data);
     }
 
 }
