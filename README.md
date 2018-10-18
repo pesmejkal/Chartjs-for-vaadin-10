@@ -14,7 +14,9 @@ chartjs callbacks
 It uses beans of above mentioned plugin to represent chart in POJO and convert it to JSON. To build these objects refer to documentation of the plugin. 
 Then it is enough to pass created object implementing CartConfig to ChartJS constructor and add it to your content.
 
-ChartJS chartJs = new ChartJS(barConfig);
+You can use mentioned build library or anu other and just add json string representing chatjs chart to ChartJS
+
+ChartJS chartJs = new ChartJS(barConfig.buildJson().toJson());
 add(chartJs);
 
 ## About me
