@@ -4,28 +4,27 @@ Vaadin 10 Java integration of chartjs library
 
 This is beta version
 
-## Supports
-almost everything what https://vaadin.com/directory/component/chartjs-add-on supports
-
-## Does not support
-chartjs callbacks
-
 ## Usage
-It uses beans of above mentioned plugin to represent chart in POJO and convert it to JSON. To build these objects refer to documentation of the plugin. 
-Then it is enough to pass created object implementing CartConfig to ChartJS constructor and add it to your content.
+You have to pass json string to ChartJS, you can use any library you want, but I recommend [Chart java](https://github.com/mdewilde/chart).
 
-You can use mentioned build library or anu other and just add json string representing chatjs chart to ChartJS
-
+```java
 ChartJS chartJs = new ChartJS(barConfig.buildJson().toJson());
 add(chartJs);
+```
+
+It supports callbacks such as legend onClick, tooltips label... 
+!!!The json string has to be valid JSON. If not it will not convert on client side to object.
+Javascript function has to be escaped with double quotes.
+```java
+ChartJS chartJs = new ChartJS(barConfig.buildJson().toJson());
+add(chartJs);
+```
 
 ## About me
 I am a student at Brno University of technology.
-I did this addon as an challenge and I probably will not have enough time to maintain it actively.
+I did this addon as an challenge and because we need it at work.
 
 I am not skilled enough in this area so any advice and contribution is appreciated.
 
 ## Architecture
 It was made according to vaadin documentation: creating polymer templates.
-
-Adding new feature should be easy by extending specified Bean class which are serialized and transfered to client side so if the property is defined in beans it should work.

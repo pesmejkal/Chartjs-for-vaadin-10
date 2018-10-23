@@ -1,8 +1,9 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<script type="text/javascript" src="../js/jsonfn.min.js" ></script>
 <dom-module id="chart-js">
     <template>
-        <div style="position: relative; width: 100%; height: 100%">
-            <canvas id="canvas" style="width: 100%; height: 100%"></canvas>
+        <div>
+            <canvas id="canvas"></canvas>
         </div>
     </template>
     <script>
@@ -10,7 +11,8 @@
             static get properties(){
                 return {
                     chartJs: {
-                        type: String
+                        type: String,
+                        observer: '_chartJsChanged'
                         },
                     chartData: {
                         type: String,
@@ -18,10 +20,16 @@
                         }
                 }
             }
-
             _chartDataChanged(newValue, oldValue){
                 if(this.chart != undefined && newValue != null){
-                    this.chart.data = JSON.parse(newValue);
+                    this.chart.data = JSONfn.parse(newValue);
+                    this.chart.update();
+                }
+            }
+
+            _chartJsChanged(newValue, oldValue){
+                if(this.chart != undefined && newValue != null){
+                    this.chart.chart(JSONfn.parse(newValue));
                     this.chart.update();
                 }
             }
@@ -38,10 +46,13 @@
                 super.connectedCallback();
 
                 var ctx = this.shadowRoot.querySelector('#canvas').getContext('2d');
-                this.chart = new Chart(ctx, JSON.parse(this.chartJs));
+                this.chart = new Chart(ctx, JSONfn.parse(this.chartJs));
             }
+
         }
 
         customElements.define(Chartjs.is, Chartjs);
+
+
     </script>
 </dom-module>

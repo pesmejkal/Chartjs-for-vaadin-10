@@ -1,7 +1,5 @@
 package com.syndybat.chartjs;
 
-import com.syndybat.chartjs.config.ChartConfig;
-import com.syndybat.chartjs.data.Data;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.dependency.JavaScript;
