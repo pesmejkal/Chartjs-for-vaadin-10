@@ -5,7 +5,7 @@
 
     <groupId>com.syndybat</groupId>
     <artifactId>chartjs</artifactId>
-    <version>1.1.6-Beta</version>
+    <version>1.1.7-Beta</version>
     <name>chartjs</name>
     <description>integration of chartjs</description>
 
