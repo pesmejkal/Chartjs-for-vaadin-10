@@ -2,8 +2,8 @@
 <script type="text/javascript" src="../js/jsonfn.min.js" ></script>
 <dom-module id="chart-js">
     <template>
-        <div>
-            <canvas id="canvas"></canvas>
+        <div class="chart-container">
+            <canvas id="chart"></canvas>
         </div>
     </template>
     <script>
@@ -42,10 +42,17 @@
                 super();
             }
 
+            ready() {
+                super.ready();
+
+                // WARNING: Chart.platform._style is part of the PRIVATE API, DO NOT RELY ON IT!!!!
+                this.shadowRoot.appendChild(Chart.platform._style.cloneNode(true));
+            }
+
             connectedCallback() {
                 super.connectedCallback();
 
-                var ctx = this.shadowRoot.querySelector('#canvas').getContext('2d');
+                var ctx = this.shadowRoot.querySelector('#chart').getContext('2d');
                 this.chart = new Chart(ctx, JSONfn.parse(this.chartJs));
             }
 
