@@ -1,6 +1,6 @@
-# ChartJS for Vaadin 10
+# ChartJS for Vaadin 10+
 
-Vaadin 10 Java integration of chartjs library
+Vaadin 10+ Java integration of chartjs library
 
 This is beta version
 
