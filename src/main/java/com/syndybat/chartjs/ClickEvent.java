@@ -4,16 +4,26 @@ import com.vaadin.flow.component.ComponentEvent;
 import com.vaadin.flow.component.DomEvent;
 
 /**
- * @author tjochec
+ * @author Tomáš Jochec
  * @since 2018-11-07
  */
 
 @DomEvent("click")
-public class ChangeEvent extends ComponentEvent<ChartJs> {
+public class ClickEvent extends ComponentEvent<ChartJs> {
+    private String label;
     private String value;
 
-    public ChangeEvent(ChartJs source, boolean fromClient) {
+     public ClickEvent(ChartJs source, boolean fromClient) {
         super(source, fromClient);
+
+        this.label = source.getLabel();
+        this.value = source.getValue();
     }
 
+    public String getLabel() {
+        return label;
+    }
+    public String getValue() {
+        return value;
+    }
 }

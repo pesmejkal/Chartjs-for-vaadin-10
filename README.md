@@ -13,11 +13,19 @@ add(chartJs);
 ```
 
 It supports callbacks such as legend onClick, tooltips label... 
-!!!The json string has to be valid JSON. If not it will not convert on client side to object.
+**The json string has to be valid JSON**. If not it will not convert on client side to object.
 Javascript function has to be escaped with double quotes.
 ```java
 ChartJS chartJs = new ChartJS(barConfig.buildJson().toJson());
 add(chartJs);
+```
+
+Click listener
+```java
+ChartJS chartJs = new ChartJS(barConfig.buildJson().toJson());
+chartJs.addClickListener(event -> {
+    System.out.println(event.getLabel() + " = " + event.getValue());
+});
 ```
 
 ## About me
