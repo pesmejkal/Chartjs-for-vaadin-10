@@ -18,9 +18,16 @@ public class ClickEvent extends ComponentEvent<ChartJs> {
         this.value = value;
     }
 
+    /**
+     * @return Dataset label
+     */
     public String getLabel() {
         return label;
     }
+
+    /**
+     * @return Dataset value
+     */
     public String getValue() {
         return value;
     }

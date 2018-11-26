@@ -30,6 +30,14 @@ public class ChartJs extends PolymerTemplate<ChartJsModel> {
         getModel().setChartData(data);
     }
 
+    public void updateOptions(String options){
+        getModel().setChartOptions(options);
+    }
+
+    /**
+     * @param label - Dataset label
+     * @param value - Dataset value
+     */
     @ClientCallable
     private void handleClick(String label, String value) {
         fireEvent(new ClickEvent(this, false, label, value));

@@ -17,9 +17,21 @@
                     chartData: {
                         type: String,
                         observer: '_chartDataChanged'
-                        }
+                        },
+                    chartOptions: {
+                        type: String,
+                        observer: '_chartOptionsChanged'
+                    }
                 }
             }
+
+            _chartJsChanged(newValue, oldValue){
+                if(this.chart != undefined && newValue != null){
+                    this.chart.chart(JSONfn.parse(newValue));
+                    this.chart.update();
+                }
+            }
+
             _chartDataChanged(newValue, oldValue){
                 if(this.chart != undefined && newValue != null){
                     this.chart.data = JSONfn.parse(newValue);
@@ -27,9 +39,9 @@
                 }
             }
 
-            _chartJsChanged(newValue, oldValue){
+            _chartOptionsChanged(newValue, oldValue){
                 if(this.chart != undefined && newValue != null){
-                    this.chart.chart(JSONfn.parse(newValue));
+                    this.chart.options(JSONfn.parse(newValue));
                     this.chart.update();
                 }
             }
