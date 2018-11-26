@@ -49,7 +49,7 @@
                     var label = chartData.labels[idx];
                     var value = chartData.datasets[0].data[idx];
 
-                    vaadinServer.setLabelAndValue(label, value);
+                    vaadinServer.handleClick(label, value);
                 }
             };
 

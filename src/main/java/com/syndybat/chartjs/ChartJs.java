@@ -12,8 +12,6 @@ import com.vaadin.flow.shared.Registration;
 @HtmlImport("html/chartjs.html")
 @JavaScript("bower_components/chart.js/dist/Chart.js")
 public class ChartJs extends PolymerTemplate<ChartJsModel> {
-    private String label;
-    private String value;
 
     public Registration addClickListener(
             ComponentEventListener<ClickEvent> listener) {
@@ -33,16 +31,7 @@ public class ChartJs extends PolymerTemplate<ChartJsModel> {
     }
 
     @ClientCallable
-    private void setLabelAndValue(String label, String value) {
-        this.label = label;
-        this.value = value;
-    }
-
-    public String getLabel() {
-        return label;
-    }
-
-    public String getValue() {
-        return value;
+    private void handleClick(String label, String value) {
+        fireEvent(new ClickEvent(this, false, label, value));
     }
 }
