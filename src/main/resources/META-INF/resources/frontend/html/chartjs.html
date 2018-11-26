@@ -2,8 +2,8 @@
 <script type="text/javascript" src="../js/jsonfn.min.js" ></script>
 <dom-module id="chart-js">
     <template>
-        <div>
-            <canvas id="canvas"></canvas>
+        <div class="chart-container">
+            <canvas id="chart" on-click="handleClick"></canvas>
         </div>
     </template>
     <script>
@@ -17,13 +17,11 @@
                     chartData: {
                         type: String,
                         observer: '_chartDataChanged'
-                        }
-                }
-            }
-            _chartDataChanged(newValue, oldValue){
-                if(this.chart != undefined && newValue != null){
-                    this.chart.data = JSONfn.parse(newValue);
-                    this.chart.update();
+                        },
+                    chartOptions: {
+                        type: String,
+                        observer: '_chartOptionsChanged'
+                    }
                 }
             }
 
@@ -34,18 +32,54 @@
                 }
             }
 
+            _chartDataChanged(newValue, oldValue){
+                if(this.chart != undefined && newValue != null){
+                    this.chart.data = JSONfn.parse(newValue);
+                    this.chart.update();
+                }
+            }
+
+            _chartOptionsChanged(newValue, oldValue){
+                if(this.chart != undefined && newValue != null){
+                    this.chart.options(JSONfn.parse(newValue));
+                    this.chart.update();
+                }
+            }
+
             static get is() {
                 return 'chart-js'
             }
+
+            handleClick(event) {
+                var activePoints = this.chart.getElementsAtEvent(event);
+                var vaadinServer = this.$server;
+
+                if (activePoints[0]) {
+                    var chartData = activePoints[0]['_chart'].config.data;
+                    var idx = activePoints[0]['_index'];
+
+                    var label = chartData.labels[idx];
+                    var value = chartData.datasets[0].data[idx];
+
+                    vaadinServer.handleClick(label, value);
+                }
+            };
 
             constructor() {
                 super();
             }
 
+            ready() {
+                super.ready();
+
+                // WARNING: Chart.platform._style is part of the PRIVATE API, DO NOT RELY ON IT!!!!
+                this.shadowRoot.appendChild(Chart.platform._style.cloneNode(true));
+            }
+
             connectedCallback() {
                 super.connectedCallback();
 
-                var ctx = this.shadowRoot.querySelector('#canvas').getContext('2d');
+                var ctx = this.shadowRoot.querySelector('#chart').getContext('2d');
                 this.chart = new Chart(ctx, JSONfn.parse(this.chartJs));
             }
 
