@@ -10,6 +10,7 @@ import com.vaadin.flow.shared.Registration;
 
 @Tag("chart-js")
 @HtmlImport("html/chartjs.html")
+@JavaScript("bower_components/moment/moment.js")
 @JavaScript("bower_components/chart.js/dist/Chart.js")
 public class ChartJs extends PolymerTemplate<ChartJsModel> {
 
