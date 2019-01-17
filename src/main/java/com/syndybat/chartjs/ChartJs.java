@@ -10,8 +10,8 @@ import com.vaadin.flow.shared.Registration;
 
 @Tag("chart-js")
 @HtmlImport("html/chartjs.html")
-@JavaScript("bower_components/moment/moment.js")
-@JavaScript("bower_components/chart.js/dist/Chart.js")
+@JavaScript("bower_components/moment/min/moment.min.js")
+@JavaScript("bower_components/chart.js/dist/Chart.min.js")
 public class ChartJs extends PolymerTemplate<ChartJsModel> {
 
     public Registration addClickListener(
