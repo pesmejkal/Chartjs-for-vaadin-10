@@ -1,5 +1,11 @@
 package com.syndybat.chartjs;
 
+import org.apache.commons.lang3.StringUtils;
+
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.Route;
+
 import be.ceau.chart.BarChart;
 import be.ceau.chart.color.Color;
 import be.ceau.chart.data.BarData;
@@ -8,11 +14,6 @@ import be.ceau.chart.javascript.JavaScriptFunction;
 import be.ceau.chart.options.BarOptions;
 import be.ceau.chart.options.Legend;
 import be.ceau.chart.options.Title;
-import be.ceau.chart.options.Tooltips;
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.router.Route;
-import org.apache.commons.lang3.StringUtils;
 
 @Route("")
 public class DemoView extends VerticalLayout {
