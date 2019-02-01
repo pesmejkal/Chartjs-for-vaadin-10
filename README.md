@@ -4,6 +4,28 @@ Vaadin 10+ Java integration of [Chart.js](https://github.com/chartjs/Chart.js) l
 
 This is **beta** version, also available in [Vaadin directory](https://vaadin.com/directory/component/chartjs).
 
+## Instructions
+Demo example source: [example](https://github.com/syndybat/Chartjs-for-vaadin-10/blob/master/src/test/java/com/syndybat/chartjs/DemoView.java)
+
+Add this dependency to your project in order to use this addon:
+```pom
+<dependency>
+	<groupId>com.syndybat</groupId>
+	<artifactId>chartjs</artifactId>
+	<version>1.1.9-Beta</version>
+</dependency>
+```
+The demo example depends on chratjs library which builds JSON for chartjs.
+You can use the same library:
+```pom
+<dependency>
+	<groupId>be.ceau</groupId>
+	<artifactId>chart</artifactId>
+	<version>2.5.0</version>
+</dependency>
+```
+or choose any other way you wish. Because this is lightway and only needs to pass correct JSON.
+
 ## Usage
 You have to pass json string to ChartJS, you can use any library you want, but I recommend [Chart.java](https://github.com/mdewilde/chart).
 
