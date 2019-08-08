@@ -51,17 +51,18 @@
             }
 
             handleClick(event) {
-                var activePoints = this.chart.getElementsAtEvent(event);
+                var activePoints = this.chart.getElementAtEvent(event);
                 var vaadinServer = this.$server;
 
                 if (activePoints[0]) {
-                    var chartData = activePoints[0]['_chart'].config.data;
-                    var idx = activePoints[0]['_index'];
+                    var activePoint = activePoints[0];
+                    var data = activePoint._chart.data;
+                    var datasetIndex = activePoint._datasetIndex;
+                    var label = data.labels[activePoint._index];
+                    var datasetLabel = data.datasets[datasetIndex].label;
+                    var value = data.datasets[datasetIndex].data[activePoint._index];
 
-                    var label = chartData.labels[idx];
-                    var value = chartData.datasets[0].data[idx];
-
-                    vaadinServer.handleClick(label, value);
+                    vaadinServer.handleClick(label, datasetLabel, value);
                 }
             };
 
